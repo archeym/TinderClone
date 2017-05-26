@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="TinderClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Hb-hF-uVf">
+                                <rect key="frame" x="16" y="67" width="343" height="534"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3TG-LC-swl">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="534"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RKA-JF-dyf">
+                                        <rect key="frame" x="223" y="8" width="120" height="90"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gjD-7a-Jr4">
+                                        <rect key="frame" x="8" y="8" width="120" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="5ux-Qk-WIk"/>
+                                            <constraint firstAttribute="height" constant="90" id="plA-gc-pbw"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="3TG-LC-swl" secondAttribute="bottom" id="2Je-1W-tGn"/>
+                                    <constraint firstItem="gjD-7a-Jr4" firstAttribute="leading" secondItem="2Hb-hF-uVf" secondAttribute="leadingMargin" id="3Ph-1b-f5E"/>
+                                    <constraint firstItem="3TG-LC-swl" firstAttribute="trailing" secondItem="RKA-JF-dyf" secondAttribute="trailing" id="Hgj-yo-GMg"/>
+                                    <constraint firstItem="RKA-JF-dyf" firstAttribute="leading" secondItem="gjD-7a-Jr4" secondAttribute="trailing" constant="95" id="Jue-JS-GZz"/>
+                                    <constraint firstItem="3TG-LC-swl" firstAttribute="top" secondItem="2Hb-hF-uVf" secondAttribute="top" id="LmU-lv-L26"/>
+                                    <constraint firstItem="gjD-7a-Jr4" firstAttribute="bottom" secondItem="RKA-JF-dyf" secondAttribute="bottom" id="O0o-jB-3LW"/>
+                                    <constraint firstAttribute="trailing" secondItem="3TG-LC-swl" secondAttribute="trailing" id="YG3-NO-tbl"/>
+                                    <constraint firstItem="3TG-LC-swl" firstAttribute="leading" secondItem="2Hb-hF-uVf" secondAttribute="leading" id="ZkY-WG-c68"/>
+                                    <constraint firstItem="gjD-7a-Jr4" firstAttribute="top" secondItem="2Hb-hF-uVf" secondAttribute="topMargin" id="hvf-HS-4gO"/>
+                                    <constraint firstItem="gjD-7a-Jr4" firstAttribute="top" secondItem="RKA-JF-dyf" secondAttribute="top" id="uZS-XV-VnC"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="b4L-x2-ELl" appends="YES" id="j86-32-WuV"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfD-GH-XgI">
+                                <rect key="frame" x="16" y="609" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="vbv-xC-ynw"/>
+                                </constraints>
+                                <state key="normal" image="restart"/>
+                                <connections>
+                                    <action selector="refreshView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Xx-5v-Ao8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRt-sP-kfL">
+                                <rect key="frame" x="303" y="616" width="56" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="J0F-R8-ini"/>
+                                </constraints>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z59-rE-saQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2Hb-hF-uVf" firstAttribute="leading" secondItem="dfD-GH-XgI" secondAttribute="leading" id="N1C-9X-DS7"/>
+                            <constraint firstItem="2Hb-hF-uVf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="QGW-jF-EDh"/>
+                            <constraint firstItem="2Hb-hF-uVf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="47" id="Rlu-93-8sF"/>
+                            <constraint firstItem="2Hb-hF-uVf" firstAttribute="trailing" secondItem="RRt-sP-kfL" secondAttribute="trailing" id="h8W-2M-yf3"/>
+                            <constraint firstItem="dfD-GH-XgI" firstAttribute="top" secondItem="2Hb-hF-uVf" secondAttribute="bottom" constant="8" symbolic="YES" id="jpi-KK-uZG"/>
+                            <constraint firstItem="dfD-GH-XgI" firstAttribute="centerY" secondItem="RRt-sP-kfL" secondAttribute="centerY" id="sdt-nL-7Jy"/>
+                            <constraint firstItem="2Hb-hF-uVf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="v3X-QA-7EP"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dfD-GH-XgI" secondAttribute="bottom" constant="14" id="vNy-Dz-jps"/>
+                            <constraint firstItem="2Hb-hF-uVf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="xhL-0D-sg5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="girlsView" destination="2Hb-hF-uVf" id="HG7-ml-g9F"/>
+                        <outlet property="likeImageView" destination="gjD-7a-Jr4" id="3nI-xJ-25G"/>
+                        <outlet property="nopeImageView" destination="RKA-JF-dyf" id="BZh-1h-mIl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="b4L-x2-ELl">
+                    <connections>
+                        <action selector="handleSwipe:" destination="BYZ-38-t0r" id="pD4-yO-Rhu"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="140" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="gray" width="500" height="750"/>
+        <image name="restart" width="24" height="24"/>
+    </resources>
+</document>
