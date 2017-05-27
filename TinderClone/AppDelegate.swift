@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         if(rememberLogin()){
-            let initController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController")
+            let initController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Navigation")
             window?.rootViewController = initController
             
         }else{
