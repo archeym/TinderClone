@@ -64,23 +64,30 @@ class LoginViewController: UIViewController {
 
     }
 
+    @IBOutlet weak var fb: FBSDKLoginButton!{
+        didSet{
+            fb.delegate = self
+            fb.readPermissions = ["email", "public_profile"]
+        }
+    }
+    
     @IBAction func loginWithFacebook(_ sender: Any) {
         let facebookLogin = FBSDKLoginManager()
-        facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
+        facebookLogin.logIn(withReadPermissions: ["email", "public_profile"], from: self) { (result, error) in
             if error != nil {
                 print("Unable to authenticate with Facebook - \(error?.localizedDescription ?? "")")
             } else if result?.isCancelled == true {
                 print("User cancelled Facebook authentication")
             } else {
                 print("Successfully authenticated with Facebook")
-                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
                 self.handleAuth(credential)
                 self.indicatorStart()
             }
         }
     }
-    func handleAuth(_ credential: FIRAuthCredential) {
-        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+    func handleAuth(_ credential: AuthCredential) {
+        Auth.auth().signIn(with: credential, completion: { (user, error) in
             if error != nil {
                 print("Unable to authenticate with Firebase - \(String(describing: error?.localizedDescription))")
             } else {
@@ -88,7 +95,7 @@ class LoginViewController: UIViewController {
                 if let user = user, let name = user.displayName, let email = user.email {
                     
                     let values = ["name": name, "email": email] as [String : Any]
-                    FIRDatabase.database().reference().child("users").child(user.uid).updateChildValues(values, withCompletionBlock: { (err, ref) in
+                    Database.database().reference().child("users").child(user.uid).updateChildValues(values, withCompletionBlock: { (err, ref) in
                         if err != nil {
                             print(err!)
                             return
@@ -115,12 +122,6 @@ class LoginViewController: UIViewController {
         activityIndicator.startAnimating()
     }
     
-    @IBAction func loginWithEmail(_ sender: Any) {
-        guard let singUp = UIStoryboard(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "RegisterViewController") as?  RegisterViewController else {return}
-        
-        present(singUp, animated: true, completion: nil)
-        
-    }
     
 }//end
 

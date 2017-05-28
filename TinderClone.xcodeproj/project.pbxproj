@@ -14,9 +14,10 @@
 		211DDA3A1ED7D6CA000A7349 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 211DDA391ED7D6CA000A7349 /* Assets.xcassets */; };
 		211DDA3D1ED7D6CA000A7349 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 211DDA3B1ED7D6CA000A7349 /* LaunchScreen.storyboard */; };
 		211DDA471ED7FC7F000A7349 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 211DDA461ED7FC7F000A7349 /* GoogleService-Info.plist */; };
-		216130C31ED9426A00EE33AD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216130C21ED9426A00EE33AD /* RegisterViewController.swift */; };
 		216130C51ED9687500EE33AD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216130C41ED9687500EE33AD /* ProfileViewController.swift */; };
 		216130C71ED96EDF00EE33AD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216130C61ED96EDF00EE33AD /* ChatViewController.swift */; };
+		216130C91EDA791B00EE33AD /* CacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216130C81EDA791B00EE33AD /* CacheImage.swift */; };
+		216130D21EDA996300EE33AD /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216130D11EDA996300EE33AD /* FacebookLogin.swift */; };
 		219D9AEA1ED8007B0089A79B /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 219D9AE91ED8007B0089A79B /* Auth.storyboard */; };
 		219D9AEC1ED806680089A79B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219D9AEB1ED806680089A79B /* LoginViewController.swift */; };
 		219D9AEE1ED806F30089A79B /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219D9AED1ED806F30089A79B /* GradientButton.swift */; };
@@ -32,9 +33,10 @@
 		211DDA3C1ED7D6CA000A7349 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		211DDA3E1ED7D6CA000A7349 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		211DDA461ED7FC7F000A7349 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		216130C21ED9426A00EE33AD /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		216130C41ED9687500EE33AD /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		216130C61ED96EDF00EE33AD /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		216130C81EDA791B00EE33AD /* CacheImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheImage.swift; sourceTree = "<group>"; };
+		216130D11EDA996300EE33AD /* FacebookLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		219D9AE91ED8007B0089A79B /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		219D9AEB1ED806680089A79B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		219D9AED1ED806F30089A79B /* GradientButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
@@ -83,12 +85,10 @@
 		211DDA311ED7D6C9000A7349 /* TinderClone */ = {
 			isa = PBXGroup;
 			children = (
-				219D9AED1ED806F30089A79B /* GradientButton.swift */,
 				211DDA321ED7D6C9000A7349 /* AppDelegate.swift */,
-				211DDA341ED7D6C9000A7349 /* ViewController.swift */,
-				216130C41ED9687500EE33AD /* ProfileViewController.swift */,
-				216130C61ED96EDF00EE33AD /* ChatViewController.swift */,
-				211DDA361ED7D6CA000A7349 /* Main.storyboard */,
+				216130CE1EDA8D8300EE33AD /* Model */,
+				216130CF1EDA8DA000EE33AD /* Controller */,
+				216130D01EDA8DD500EE33AD /* View */,
 				216130C11ED9424800EE33AD /* Auth */,
 				211DDA391ED7D6CA000A7349 /* Assets.xcassets */,
 				211DDA3B1ED7D6CA000A7349 /* LaunchScreen.storyboard */,
@@ -103,9 +103,36 @@
 			children = (
 				219D9AE91ED8007B0089A79B /* Auth.storyboard */,
 				219D9AEB1ED806680089A79B /* LoginViewController.swift */,
-				216130C21ED9426A00EE33AD /* RegisterViewController.swift */,
 			);
 			name = Auth;
+			sourceTree = "<group>";
+		};
+		216130CE1EDA8D8300EE33AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				219D9AED1ED806F30089A79B /* GradientButton.swift */,
+				216130C81EDA791B00EE33AD /* CacheImage.swift */,
+				216130D11EDA996300EE33AD /* FacebookLogin.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		216130CF1EDA8DA000EE33AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				211DDA341ED7D6C9000A7349 /* ViewController.swift */,
+				216130C41ED9687500EE33AD /* ProfileViewController.swift */,
+				216130C61ED96EDF00EE33AD /* ChatViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		216130D01EDA8DD500EE33AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				211DDA361ED7D6CA000A7349 /* Main.storyboard */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		713518D1915FA368E28076AB /* Pods */ = {
@@ -245,10 +272,11 @@
 			files = (
 				216130C51ED9687500EE33AD /* ProfileViewController.swift in Sources */,
 				219D9AEC1ED806680089A79B /* LoginViewController.swift in Sources */,
-				216130C31ED9426A00EE33AD /* RegisterViewController.swift in Sources */,
+				216130C91EDA791B00EE33AD /* CacheImage.swift in Sources */,
 				216130C71ED96EDF00EE33AD /* ChatViewController.swift in Sources */,
 				219D9AEE1ED806F30089A79B /* GradientButton.swift in Sources */,
 				211DDA351ED7D6C9000A7349 /* ViewController.swift in Sources */,
+				216130D21EDA996300EE33AD /* FacebookLogin.swift in Sources */,
 				211DDA331ED7D6C9000A7349 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
