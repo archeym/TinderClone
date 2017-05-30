@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var segmentedController: UISegmentedControl!{
         didSet{
             
@@ -20,6 +20,8 @@ class ViewController: UIViewController {
             
         }
     }
+    
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var girlsView: UIView!
     @IBOutlet weak var nopeImageView: UIImageView!
     @IBOutlet weak var likeImageView: UIImageView!
@@ -33,7 +35,7 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        //rundomGirls()
         dividor = (view.frame.width / 2) / 0.61
     }
     
@@ -79,7 +81,6 @@ class ViewController: UIViewController {
                     girlCard.alpha = 0
                 })
                 return
-                
             }else if girlCard.center.x > (view.frame.width - 75){
                 // the view should move to the right
                 UIView.animate(withDuration: 0.4, animations: {
@@ -87,10 +88,14 @@ class ViewController: UIViewController {
                     girlCard.alpha = 0
                 })
                 return
+            
             }
+          
             refreshGirls()
         }
     }
+    
+    
     func refreshGirls(){
         self.girlsView.center = self.view.center
         self.likeImageView.alpha = 0

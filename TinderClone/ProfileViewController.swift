@@ -11,6 +11,7 @@ import Firebase
 
 class ProfileViewController: UIViewController {
     
+    @IBOutlet weak var carusellLabel: UILabel!
     @IBOutlet weak var editPhoto: UIButton!
     @IBOutlet weak var imageView: UIImageView!{
         didSet{
@@ -23,10 +24,9 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var scrollView: UIScrollView!
     var profileImage : String? = ""
-    var profileRating : String? = ""
-    
     var currentUserID = Auth.auth().currentUser?.uid
     var currentUser : User? = Auth.auth().currentUser
 
@@ -47,7 +47,6 @@ class ProfileViewController: UIViewController {
         Database.database().reference().child("users").child(currentUserID!).observe(.value, with: { (snapshot) in
             let dictionary = snapshot.value as? [String : Any]
             self.nameLabel.text = dictionary?["name"] as? String
-            self.emailLabel.text = dictionary?["email"] as? String
             self.profileImage = dictionary?["profileImageUrl"] as? String
             
             if let profileURL = self.profileImage {
@@ -55,6 +54,17 @@ class ProfileViewController: UIViewController {
                 self.imageView.circlerImage()
             }
         })
+    }
+    func loginScrollView(){
+        self.scrollView.frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: self.view.frame.width/1.1)
+     
+        
+        carusellLabel.textAlignment = .center
+        carusellLabel.text = "Discover new and interesting people nearby"
+        carusellLabel.textColor = .black
+        self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width*4, height: self.scrollView.frame.height)
+        self.scrollView.delegate = self
+        self.pageControl.currentPage = 0
     }
     
     @IBAction func editInfoButton(_ sender: Any) {
@@ -69,12 +79,29 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         listenToFirebase()
+        loginScrollView()
 
     }
     
     @IBAction func backToTinder(_ sender: Any) {
         dismiss(animated: false, completion: nil)
-        //navigationController?.popToRootViewController(animated: true)
     }
 
+}
+extension ProfileViewController :  UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView){
+        let pageWidth:CGFloat = scrollView.frame.width
+        let currentPage:CGFloat = floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
+        self.pageControl.currentPage = Int(currentPage);
+        if Int(currentPage) == 0{
+            carusellLabel.text = "Discover new and interesting people nearby"
+        }else if Int(currentPage) == 1{
+            carusellLabel.text = "Swipe Right to anonymously like someone or Swipe left to pass"
+        }else if Int(currentPage) == 2{
+            carusellLabel.text = "If they also Swipe Right, it's a Match!"
+        }else{
+            carusellLabel.text = "Only people you've matched with can message you"
+            
+        }
+    }
 }
