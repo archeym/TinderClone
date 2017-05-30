@@ -17,12 +17,14 @@ extension LoginViewController : FBSDKLoginButtonDelegate {
             print(error)
             return
         }
+        self.indicatorStart()
         showInfo()
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User logged out")
     }
+    
     
     func showInfo() {
         let accessToken = FBSDKAccessToken.current()

@@ -40,16 +40,16 @@ class LoginViewController: UIViewController {
         let imageThree = UIImageView(frame: CGRect(x: scrollViewWidth*2, y: 0, width: scrollViewWidth, height: scrollViewHeight))
         let imageFour = UIImageView(frame: CGRect(x: scrollViewWidth*3, y: 0, width: scrollViewWidth, height: scrollViewHeight))
         
-        imageOne.image = UIImage(named: "gray2")
+        imageOne.image = UIImage(named: "imaga1")
         imageOne.layer.cornerRadius = 15
         imageOne.layer.masksToBounds = true
-        imageTwo.image = UIImage(named: "gray2")
+        imageTwo.image = UIImage(named: "imaga2")
         imageTwo.layer.cornerRadius = 15
         imageTwo.layer.masksToBounds = true
-        imageThree.image = UIImage(named: "gray2")
+        imageThree.image = UIImage(named: "imaga3")
         imageThree.layer.cornerRadius = 15
         imageThree.layer.masksToBounds = true
-        imageFour.image = UIImage(named: "gray2")
+        imageFour.image = UIImage(named: "imaga4")
         imageFour.layer.cornerRadius = 15
         imageFour.layer.masksToBounds = true
         
@@ -70,42 +70,7 @@ class LoginViewController: UIViewController {
             fb.readPermissions = ["email", "public_profile"]
         }
     }
-    
-    @IBAction func loginWithFacebook(_ sender: Any) {
-        let facebookLogin = FBSDKLoginManager()
-        facebookLogin.logIn(withReadPermissions: ["email", "public_profile"], from: self) { (result, error) in
-            if error != nil {
-                print("Unable to authenticate with Facebook - \(error?.localizedDescription ?? "")")
-            } else if result?.isCancelled == true {
-                print("User cancelled Facebook authentication")
-            } else {
-                print("Successfully authenticated with Facebook")
-                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                self.handleAuth(credential)
-                self.indicatorStart()
-            }
-        }
-    }
-    func handleAuth(_ credential: AuthCredential) {
-        Auth.auth().signIn(with: credential, completion: { (user, error) in
-            if error != nil {
-                print("Unable to authenticate with Firebase - \(String(describing: error?.localizedDescription))")
-            } else {
-                print("JESS: Successfully authenticated with Firebase")
-                if let user = user, let name = user.displayName, let email = user.email {
-                    
-                    let values = ["name": name, "email": email] as [String : Any]
-                    Database.database().reference().child("users").child(user.uid).updateChildValues(values, withCompletionBlock: { (err, ref) in
-                        if err != nil {
-                            print(err!)
-                            return
-                        }
-                    })
-                    self.registerButtonToNextVC()
-                }
-            }
-        })
-    }
+
     func registerButtonToNextVC(){
         let currentStoryboard = UIStoryboard (name: "Main", bundle: Bundle.main)
         
